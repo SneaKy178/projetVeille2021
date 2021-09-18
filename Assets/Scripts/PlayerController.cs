@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private float jumpTimeCounter;
     public float jumpTime;
     private bool isJumping;
+
+    public PhysicsMaterial2D bounceMat, normalMat;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -58,6 +60,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.W))
         {
             isJumping = false;
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (jumpTimeCounter > 0 && other.gameObject.tag == "Walls")
+        {
+            rb.sharedMaterial = bounceMat;
+        }
+        else if (other.gameObject.tag == "Platforms")
+        {
+            rb.sharedMaterial = normalMat;
         }
     }
 }
