@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
 
     public PhysicsMaterial2D bounceMat, normalMat;
+    
+    private bool allowHorizontalInput = true;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,12 +31,18 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        if (allowHorizontalInput)
+        {
+            moveInput = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        }
+        
+        
     }
 
     private void Update()
     {
+
         isGrounded = Physics2D.OverlapCircle(characterPos.position, checkRedius, groundTexture);
 
         if (isGrounded == true && Input.GetKeyDown(KeyCode.W))
@@ -62,17 +71,28 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
     }
-
-
+    
+    private IEnumerator LockHorizontalInput(float duation)
+    {   
+        moveInput = 0;
+        allowHorizontalInput = false;
+        yield return new WaitForSeconds(2);
+        allowHorizontalInput = true;
+    }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (jumpTimeCounter > 0 && other.gameObject.tag == "Walls")
         {
-            rb.sharedMaterial = bounceMat;
-        }
-        else if (other.gameObject.tag == "Platforms")
-        {
-            rb.sharedMaterial = normalMat;
+            StartCoroutine(LockHorizontalInput(2));
+            rb.velocity = Vector3.zero;
+            rb.AddForce(other.contacts[0].normal * 2, ForceMode2D.Impulse);
         }
     }
 }
+
+
+  
+    
+    
+
