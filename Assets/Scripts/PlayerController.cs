@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     private float jumpTimeCounter;
     public float jumpTime;
     private bool isJumping;
-
-    public PhysicsMaterial2D bounceMat, normalMat;
+    
     
     private bool allowHorizontalInput = true;
     
@@ -33,8 +32,9 @@ public class PlayerController : MonoBehaviour
     {
         if (allowHorizontalInput)
         {
-            moveInput = Input.GetAxisRaw("Horizontal");
+            //moveInput = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            Debug.Log(moveInput);
         }
         
         
@@ -58,6 +58,18 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
+                if (Input.GetKey(KeyCode.D))
+                {
+                    moveInput = 0.5f;
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    moveInput = -0.5f;
+                }
+                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+                {
+                    moveInput = 0;
+                }
             }
             else
             {
@@ -72,22 +84,25 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    private IEnumerator LockHorizontalInput(float duation)
-    {   
-        moveInput = 0;
-        allowHorizontalInput = false;
-        yield return new WaitForSeconds(2);
-        allowHorizontalInput = true;
-    }
+
     
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (jumpTimeCounter > 0 && other.gameObject.tag == "Walls")
         {
-            StartCoroutine(LockHorizontalInput(2));
+            StartCoroutine(LockHorizontalInput(0.5f));
             rb.velocity = Vector3.zero;
-            rb.AddForce(other.contacts[0].normal * 2, ForceMode2D.Impulse);
+            rb.AddForce(other.contacts[0].normal * 3, ForceMode2D.Impulse);
         }
+    }
+    
+    
+    private IEnumerator LockHorizontalInput(float duation)
+    {   
+        moveInput = 0;
+        allowHorizontalInput = false;
+        yield return new WaitForSeconds(0.5f);
+        allowHorizontalInput = true;
     }
 }
 
