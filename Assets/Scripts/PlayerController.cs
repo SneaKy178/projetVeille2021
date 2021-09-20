@@ -59,17 +59,11 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
                 if (Input.GetKey(KeyCode.D))
-                {
                     moveInput = 0.5f;
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
+                else if (Input.GetKey(KeyCode.A))
                     moveInput = -0.5f;
-                }
-                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-                {
+                else
                     moveInput = 0;
-                }
             }
             else
             {
