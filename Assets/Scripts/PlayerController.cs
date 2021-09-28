@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
     }
     
     
-    private IEnumerator LockHorizontalInput(float duation)
+    private IEnumerator LockHorizontalInput(float duration)
     {   
         moveInput = 0;
         allowHorizontalInput = false;
