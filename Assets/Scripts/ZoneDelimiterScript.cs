@@ -8,6 +8,7 @@ public class ZoneDelimiterScript : MonoBehaviour
     [SerializeField] private Transform rayCast;
     private Camera camera;
     private bool playerHit = false;
+    private bool fireRaycast = true;
 
     private void Awake()
     {
@@ -16,21 +17,22 @@ public class ZoneDelimiterScript : MonoBehaviour
 
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(rayCast.transform.position, Vector2.left * 150f);
-        if (hit.collider != null)
+        RaycastHit2D hit = Physics2D.Raycast(rayCast.transform.position, Vector2.up * 150f);
+        if (hit.collider != null && fireRaycast)
         {
-            if (hit.collider.gameObject.CompareTag("Player") && !playerHit)
+            if (hit.collider.gameObject.CompareTag("Player") && !playerHit && fireRaycast)
             {
                 Debug.Log("hit the player");
                 playerHit = true;
-
+                fireRaycast = false;
             }
-
+            
             if (playerHit)
             {
-                playerHit = false;
-                //camera.transform.Translate(0.5f,0,0);
+                camera.transform.Translate(15,0,0);
             }
+
+           
             
         }
         else
