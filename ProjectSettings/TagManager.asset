@@ -8,6 +8,8 @@ TagManager:
   - Platforms
   - Background
   - Snake
+  - Zone1
+  - Zone2
   layers:
   - Default
   - TransparentFX
