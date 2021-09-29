@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -86,6 +87,11 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LockHorizontalInput(0.5f));
             rb.velocity = Vector3.zero;
             rb.AddForce(other.contacts[0].normal * 5, ForceMode2D.Impulse);
+        }
+
+        if (other.gameObject.CompareTag("Snake"))
+        {
+            SceneManager.LoadScene("FirstWorld");
         }
     }
     
