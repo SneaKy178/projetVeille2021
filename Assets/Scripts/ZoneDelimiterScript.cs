@@ -27,9 +27,17 @@ public class ZoneDelimiterScript : MonoBehaviour
                 fireRaycast = false;
             }
             
-            if (playerHit)
+            if (playerHit && gameObject.tag == "Zone1")
             {
                 camera.transform.Translate(15,0,0);
+            }
+            if (playerHit && gameObject.tag == "Zone2")
+            {
+                camera.transform.Translate(3,2,0);
+            }
+            if (playerHit && gameObject.tag == "Zone3")
+            {
+                camera.transform.Translate(0,6,0);
             }
 
            
