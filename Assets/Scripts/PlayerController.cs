@@ -64,12 +64,13 @@ public class PlayerController : MonoBehaviour
                     moveInput = -0.5f;
                 else
                     moveInput = 0;
+                
             }
             else
             {
                 isJumping = false;
             }
-            
+
         }
 
         if (Input.GetKeyUp(KeyCode.W))

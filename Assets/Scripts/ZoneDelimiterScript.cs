@@ -29,15 +29,19 @@ public class ZoneDelimiterScript : MonoBehaviour
             
             if (playerHit && gameObject.tag == "Zone1")
             {
-                camera.transform.Translate(15,0,0);
+                camera.transform.Translate(11,0,0);
             }
-            if (playerHit && gameObject.tag == "Zone2")
+            else if (playerHit && gameObject.tag == "Zone2")
             {
-                camera.transform.Translate(3,2,0);
+                camera.transform.Translate(3,0,0);
             }
-            if (playerHit && gameObject.tag == "Zone3")
+            else if (playerHit && gameObject.tag == "Zone3")
             {
-                camera.transform.Translate(0,6,0);
+                camera.transform.Translate(-12,6,0);
+            }
+            else if (playerHit && gameObject.tag == "Zone4")
+            {
+                camera.transform.Translate(0,3,0);
             }
 
            
