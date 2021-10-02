@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
             if (rb.position.y < -6f)
             {
+                //SoundManagerScript.PlaySound("gameOver");
                 FindObjectOfType<GameManagerScript>().GameOver();
             }
         }
@@ -77,6 +78,10 @@ public class PlayerController : MonoBehaviour
             
             SpriteRenderer.sprite = Crouching;
             BoxCollider2D.size = CrouchingSize;
+            
+            
+            SoundManagerScript.PlaySound("jump");
+            
         } else if (Input.GetKeyUp(KeyCode.W))
         {
             SpriteRenderer.sprite = Standing;

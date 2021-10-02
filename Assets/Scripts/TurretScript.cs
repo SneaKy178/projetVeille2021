@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    [SerializeField] private float scanRadius = 3f;
+    [SerializeField] private float scanRadius = 5f;
     [SerializeField] private LayerMask layers;
     private Collider2D target;
 
@@ -16,7 +16,7 @@ public class TurretScript : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("Fire",0f, fireDelay);
+        InvokeRepeating("Fire", 0f, fireDelay);
     }
 
     private void Update()
@@ -45,6 +45,7 @@ public class TurretScript : MonoBehaviour
         if (target != null)
         {
             Instantiate(fireball, firepoint.position,firepoint.rotation);
+            SoundManagerScript.PlaySound("shooting");
         }
     }
 
@@ -52,4 +53,6 @@ public class TurretScript : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, scanRadius);
     }
+    
+    
 }
