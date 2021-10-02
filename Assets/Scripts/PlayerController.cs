@@ -23,10 +23,30 @@ public class PlayerController : MonoBehaviour
     
     
     private bool allowHorizontalInput = true;
-    
+
+
+
+    public SpriteRenderer SpriteRenderer;
+    public Sprite Standing;
+    public Sprite Crouching;
+    public BoxCollider2D BoxCollider2D;
+    public Vector2 StandingSize;
+    public Vector2 CrouchingSize;
+
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        BoxCollider2D = GetComponent<BoxCollider2D>();
+        BoxCollider2D.size = StandingSize;
+
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer.sprite = Standing;
+
+        StandingSize = BoxCollider2D.size;
+
     }
 
     private void FixedUpdate()
@@ -54,7 +74,18 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
+            
+            SpriteRenderer.sprite = Crouching;
+            BoxCollider2D.size = CrouchingSize;
+        } else if (Input.GetKeyUp(KeyCode.W))
+        {
+            SpriteRenderer.sprite = Standing;
+            BoxCollider2D.size = StandingSize;
         }
+
+        {
+            
+        } 
 
         if (Input.GetKey(KeyCode.W) && isJumping == true)
         {
@@ -62,6 +93,9 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
+                
+                SpriteRenderer.sprite = Crouching;
+                BoxCollider2D.size = CrouchingSize;
                 if (Input.GetKey(KeyCode.D))
                     moveInput = 0.5f;
                 else if (Input.GetKey(KeyCode.A))
@@ -73,6 +107,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 isJumping = false;
+                SpriteRenderer.sprite = Standing;
+                BoxCollider2D.size = StandingSize;
             }
 
         }
@@ -81,6 +117,9 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
+        
+        
+        
     }
     
 
