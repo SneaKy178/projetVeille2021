@@ -8,7 +8,7 @@ public class FireballScript : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    [SerializeField] private float speed = 10;
+    [SerializeField] private float speed = 20;
     [SerializeField] private float lifeTime = 10f;
 
      void Start()
@@ -31,8 +31,7 @@ public class FireballScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("hit player");
-            SceneManager.LoadScene("FirstWorld");
+            FindObjectOfType<GameManagerScript>().GameOver();
         }
     }
     

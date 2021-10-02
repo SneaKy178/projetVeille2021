@@ -22,7 +22,6 @@ public class ZoneDelimiterScript : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Player") && !playerHit && fireRaycast)
             {
-                Debug.Log("hit the player");
                 playerHit = true;
                 fireRaycast = false;
             }
@@ -41,15 +40,11 @@ public class ZoneDelimiterScript : MonoBehaviour
             }
             else if (playerHit && gameObject.tag == "Zone4")
             {
-                camera.transform.Translate(0,3,0);
+                camera.transform.Translate(-5,0,0);
             }
 
            
             
-        }
-        else
-        {
-            Debug.Log("Nothing hit");
         }
     }
 }

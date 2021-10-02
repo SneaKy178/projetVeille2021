@@ -8,17 +8,17 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed;
-    public float jumpForce;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
     private float moveInput;
 
     private bool isGrounded;
-    public Transform characterPos;
-    public float checkRedius;
-    public LayerMask groundTexture;
+    [SerializeField] private Transform characterPos;
+    [SerializeField] private float checkRedius;
+    [SerializeField] private LayerMask groundTexture;
 
     private float jumpTimeCounter;
-    public float jumpTime;
+    [SerializeField] private float jumpTime;
     private bool isJumping;
     
     
@@ -33,8 +33,12 @@ public class PlayerController : MonoBehaviour
     {
         if (allowHorizontalInput)
         {
-            //moveInput = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+            if (rb.position.y < -6f)
+            {
+                FindObjectOfType<GameManagerScript>().GameOver();
+            }
         }
         
         
@@ -92,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Snake"))
         {
-            SceneManager.LoadScene("FirstWorld");
+            FindObjectOfType<GameManagerScript>().GameOver();
         }
     }
     
@@ -104,6 +108,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         allowHorizontalInput = true;
     }
+    
+    
 }
 
 
