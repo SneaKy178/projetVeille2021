@@ -501,7 +501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &556200501
 Transform:
   m_ObjectHideFlags: 0
@@ -2675,7 +2675,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 6200000, guid: 40e3f93e64c32f4468960b5de9809e0f, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2745,7 +2745,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6299452940519449263, guid: 42c51242ff4d50947a19cb25016c9fe1,
+  m_Sprite: {fileID: -1981437635880020547, guid: 42c51242ff4d50947a19cb25016c9fe1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2792,6 +2792,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpTime: 0.35
+  SpriteRenderer: {fileID: 0}
+  Standing: {fileID: -1981437635880020547, guid: 42c51242ff4d50947a19cb25016c9fe1,
+    type: 3}
+  Crouching: {fileID: -6626920692342517838, guid: 42c51242ff4d50947a19cb25016c9fe1,
+    type: 3}
+  BoxCollider2D: {fileID: 0}
+  StandingSize: {x: 1.140992, y: 1.463875}
+  CrouchingSize: {x: 1.140992, y: 1.463875}
 --- !u!1 &1194235727
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,7 +3035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1599501446
 MonoBehaviour:
   m_ObjectHideFlags: 0
