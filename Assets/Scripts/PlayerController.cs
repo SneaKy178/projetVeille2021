@@ -142,6 +142,11 @@ public class PlayerController : MonoBehaviour
         {
             FindObjectOfType<GameManagerScript>().GameOver();
         }
+        
+        if (other.gameObject.CompareTag("Slime"))
+        {
+            FindObjectOfType<GameManagerScript>().GameOver();
+        }
     }
     
     

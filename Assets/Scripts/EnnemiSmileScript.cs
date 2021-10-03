@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnnemiSnakeScript : MonoBehaviour
+public class EnnemiSmileScript : MonoBehaviour
 {
-
-    [SerializeField] private float speed = 2;
+    [SerializeField] private float speed = 3;
     [SerializeField] private Transform[] waypoints;
     private Transform targetWaypoint;
     private int destinationPoint = 0;
@@ -29,5 +27,4 @@ public class EnnemiSnakeScript : MonoBehaviour
             sprite.flipX = !sprite.flipX;
         }
     }
-    
 }
