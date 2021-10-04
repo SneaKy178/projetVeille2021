@@ -4,14 +4,15 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
     private bool gameIsEnded = false;
-    private float restartDelay = 1f;
+    private float restartDelay = 2f;
     public void GameOver()
     {
         if (!gameIsEnded)
         {
+            SoundManagerScript.PlaySound("gameOver");
             gameIsEnded = true;
-            Debug.Log("game over");
             Invoke("Restart", restartDelay);
+
         }
     }
 

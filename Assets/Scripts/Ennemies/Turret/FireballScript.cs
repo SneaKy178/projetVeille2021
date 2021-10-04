@@ -31,6 +31,7 @@ public class FireballScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            SoundManagerScript.PlaySound("playerDie");
             FindObjectOfType<GameManagerScript>().GameOver();
         }
     }

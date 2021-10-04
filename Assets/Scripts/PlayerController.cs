@@ -23,15 +23,10 @@ public class PlayerController : MonoBehaviour
     
     
     private bool allowHorizontalInput = true;
-
-
-
-    public SpriteRenderer SpriteRenderer;
-    public Sprite Standing;
-    public Sprite Crouching;
-    public BoxCollider2D BoxCollider2D;
-    public Vector2 StandingSize;
-    public Vector2 CrouchingSize;
+    
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite standing;
+    [SerializeField] private Sprite crouching;
 
 
 
@@ -39,13 +34,12 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        BoxCollider2D = GetComponent<BoxCollider2D>();
-        BoxCollider2D.size = StandingSize;
+      
 
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        SpriteRenderer.sprite = Standing;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = standing;
 
-        StandingSize = BoxCollider2D.size;
+
 
     }
 
@@ -57,7 +51,6 @@ public class PlayerController : MonoBehaviour
 
             if (rb.position.y < -6f)
             {
-                //SoundManagerScript.PlaySound("gameOver");
                 FindObjectOfType<GameManagerScript>().GameOver();
             }
         }
@@ -76,16 +69,14 @@ public class PlayerController : MonoBehaviour
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
             
-            SpriteRenderer.sprite = Crouching;
-            BoxCollider2D.size = CrouchingSize;
-            
-            
+            spriteRenderer.sprite = crouching;
+
+
             SoundManagerScript.PlaySound("jump");
             
         } else if (Input.GetKeyUp(KeyCode.W))
         {
-            SpriteRenderer.sprite = Standing;
-            BoxCollider2D.size = StandingSize;
+            spriteRenderer.sprite = standing;
         }
 
         {
@@ -99,8 +90,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
                 
-                SpriteRenderer.sprite = Crouching;
-                BoxCollider2D.size = CrouchingSize;
+                spriteRenderer.sprite = crouching;
                 if (Input.GetKey(KeyCode.D))
                     moveInput = 0.5f;
                 else if (Input.GetKey(KeyCode.A))
@@ -112,8 +102,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 isJumping = false;
-                SpriteRenderer.sprite = Standing;
-                BoxCollider2D.size = StandingSize;
+                spriteRenderer.sprite = standing;
             }
 
         }
@@ -140,11 +129,13 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Snake"))
         {
+            SoundManagerScript.PlaySound("playerDie");
             FindObjectOfType<GameManagerScript>().GameOver();
         }
         
         if (other.gameObject.CompareTag("Slime"))
         {
+            SoundManagerScript.PlaySound("playerDie");
             FindObjectOfType<GameManagerScript>().GameOver();
         }
     }

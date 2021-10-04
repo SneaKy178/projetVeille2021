@@ -7,7 +7,7 @@ public class WeakPointEnemyScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Destroy(transform.parent.gameObject);
+            Destroy(objectToDestroy);
             SoundManagerScript.PlaySound("snakeDeath");
         }
     }
