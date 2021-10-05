@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite standing;
     [SerializeField] private Sprite crouching;
+    [SerializeField] private SpriteRenderer sprite;
 
 
 
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.sprite = crouching;
                 if (Input.GetKey(KeyCode.D))
                     moveInput = 0.5f;
-                else if (Input.GetKey(KeyCode.A))
+                    else if (Input.GetKey(KeyCode.A))
                     moveInput = -0.5f;
                 else
                     moveInput = 0;
@@ -111,7 +112,16 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
         
-        
+        if (gameObject.name == "Player")
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                spriteRenderer.flipX = false;
+            } else if (Input.GetKeyDown(KeyCode.A))
+            {
+                spriteRenderer.flipX = true;
+            }
+        }
         
     }
     
