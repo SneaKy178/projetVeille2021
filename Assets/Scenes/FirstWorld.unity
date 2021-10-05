@@ -2972,6 +2972,7 @@ MonoBehaviour:
     type: 3}
   crouching: {fileID: -6626920692342517838, guid: 42c51242ff4d50947a19cb25016c9fe1,
     type: 3}
+  sprite: {fileID: 1169856094}
 --- !u!1 &1194235727
 GameObject:
   m_ObjectHideFlags: 0
