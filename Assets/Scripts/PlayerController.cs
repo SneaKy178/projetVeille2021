@@ -20,8 +20,7 @@ public class PlayerController : MonoBehaviour
     private float jumpTimeCounter;
     [SerializeField] private float jumpTime;
     private bool isJumping;
-    
-    
+
     private bool allowHorizontalInput = true;
     
     private SpriteRenderer spriteRenderer;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    [SerializeField] private float scanRadius = 5f;
+    [SerializeField] private float scanRadius = 4f;
     [SerializeField] private LayerMask layers;
     private Collider2D target;
 

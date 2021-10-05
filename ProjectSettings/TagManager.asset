@@ -13,6 +13,7 @@ TagManager:
   - Zone3
   - Zone4
   - Slime
+  - EndGame
   layers:
   - Default
   - TransparentFX

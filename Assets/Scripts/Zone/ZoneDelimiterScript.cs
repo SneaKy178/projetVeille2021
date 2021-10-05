@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZoneDelimiterScript : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class ZoneDelimiterScript : MonoBehaviour
             else if (playerHit && gameObject.tag == "Zone4")
             {
                 camera.transform.Translate(-5,2,0);
+            }
+            else if (playerHit && gameObject.tag == "EndGame")
+            {
+                SceneManager.LoadScene("EndGame");
             }
         }
     }
