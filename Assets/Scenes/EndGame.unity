@@ -832,7 +832,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MERCI D'AVOUR JOUER
+  m_Text: 'MERCI D''AVOIR JOUER
+
+'
 --- !u!222 &1994322864
 CanvasRenderer:
   m_ObjectHideFlags: 0

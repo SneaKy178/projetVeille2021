@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5cd8579587aca4a957dd8a3e817690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuUI: {fileID: 901845204}
+  pauseMenuUI: {fileID: 901845204}
 --- !u!1 &624907105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2941,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169856091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 9.43, z: 0}
+  m_LocalPosition: {x: -4.19, y: -1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1681181941}
@@ -3373,7 +3373,7 @@ MonoBehaviour:
   fireball: {fileID: 1277725889175247344, guid: 8394f3ba833814c4583822cf1128ae24,
     type: 3}
   firepoint: {fileID: 1961752550}
-  fireDelay: 1
+  fireDelay: 2
 --- !u!212 &1599501447
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3518,7 +3518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626258208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.2, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
